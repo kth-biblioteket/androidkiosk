@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">KTHB WagnerGuideView</string>
+    <string-array name="orientation_options">
+        <item>Portrait</item>
+        <item>Landscape</item>
+    </string-array>
+</resources>
