@@ -19,7 +19,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <!-- Invisible overlay for click tracking -->
         <View
@@ -32,94 +33,100 @@
             android:layout_margin="0dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:id="@+id/settings_drawer"
-        android:layout_width="500dp"
+    <ScrollView
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:orientation="vertical"
-        android:background="@android:color/white"
-        android:padding="16dp">
+        android:layout_gravity="start">
+        <LinearLayout
+            android:id="@+id/settings_drawer"
+            android:layout_width="500dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:padding="16dp"
+            android:fitsSystemWindows="true">
 
-        <TextView
-            android:id="@+id/label_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Inställningar"
-            android:textSize="48sp"
-            android:layout_marginBottom="20dp"/>
-        <TextView
-            android:id="@+id/label_inactivitytimeout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Timeout för inaktivitet"
-            android:textSize="16sp"
-            android:layout_marginBottom="0dp"/>
-        <EditText
-            android:id="@+id/inactivitytimeout_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:hint="Enter Timeout Value"
-            android:inputType="textUri"
-            android:text="10000"
-            android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/label_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inställningar"
+                android:textSize="36sp"
+                android:layout_marginBottom="20dp"/>
+            <TextView
+                android:id="@+id/label_inactivitytimeout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Timeout för inaktivitet"
+                android:textSize="16sp"
+                android:layout_marginBottom="0dp"/>
+            <EditText
+                android:id="@+id/inactivitytimeout_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:hint="Enter Timeout Value"
+                android:inputType="textUri"
+                android:text="10000"
+                android:layout_marginBottom="10dp"/>
 
-        <TextView
-            android:id="@+id/label_initialscale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Initial Scale"
-            android:textSize="16sp"
-            android:layout_marginBottom="0dp"/>
-        <EditText
-            android:id="@+id/initialscale_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:hint="Enter Scale Value"
-            android:inputType="textUri"
-            android:text="100"
-            android:layout_marginBottom="10dp"/>
-        <TextView
-            android:id="@+id/label_url"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="URL för startsida"
-            android:textSize="16sp"
-            android:layout_marginBottom="0dp"/>
-        <EditText
-            android:id="@+id/url_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter URL"
-            android:inputType="textUri"
-            android:text="https://wagnerguide.com/c/kth/kth"
-            android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/label_initialscale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Initial Scale"
+                android:textSize="16sp"
+                android:layout_marginBottom="0dp"/>
+            <EditText
+                android:id="@+id/initialscale_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:hint="Enter Scale Value"
+                android:inputType="textUri"
+                android:text="100"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/label_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="URL för startsida"
+                android:textSize="16sp"
+                android:layout_marginBottom="0dp"/>
+            <EditText
+                android:id="@+id/url_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter URL"
+                android:inputType="textUri"
+                android:text="https://wagnerguide.com/c/kth/kth"
+                android:layout_marginBottom="10dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select Orientation:" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Orientation:" />
 
-        <Spinner
-            android:id="@+id/orientation_spinner"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"/>
+            <Spinner
+                android:id="@+id/orientation_spinner"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
 
-        <CheckBox
-            android:id="@+id/fullscreen_checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enable Full Screen"
-            android:layout_marginBottom="20dp"/>
+            <CheckBox
+                android:id="@+id/fullscreen_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enable Full Screen"
+                android:layout_marginBottom="20dp"/>
 
-        <!-- Save Button -->
-        <Button
-            android:id="@+id/save_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Save" />
-    </LinearLayout>
+            <!-- Save Button -->
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -2,14 +2,18 @@ package com.example.kthbwagnerguideview;
 
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Build;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.WindowInsets;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -25,7 +29,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -82,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
 
         //Hämta webview etc från xml
         myWeb = findViewById(R.id.myWeb);
+        ConstraintLayout myMain = findViewById(R.id.main);
+
+        myWeb.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         drawerLayout = findViewById(R.id.drawer_layout);
         triggerArea = findViewById(R.id.trigger_area); // Initialize the trigger area
         initialscaleInput = findViewById(R.id.initialscale_input);
@@ -90,6 +100,26 @@ public class MainActivity extends AppCompatActivity {
         orientationSpinner = findViewById(R.id.orientation_spinner);
         fullscreenCheckbox = findViewById(R.id.fullscreen_checkbox);
         Button saveButton = findViewById(R.id.save_button); // Get reference to Save button
+
+        myMain.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                Rect r = new Rect();
+                myMain.getWindowVisibleDisplayFrame(r);
+                int screenHeight = myMain.getRootView().getHeight();
+                int keypadHeight = screenHeight - r.bottom;
+
+                if (keypadHeight > screenHeight * 0.15) { // If keyboard is shown
+                    ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) myWeb.getLayoutParams();
+                    params.bottomMargin = keypadHeight;
+                    myWeb.setLayoutParams(params);
+                } else {
+                    ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) myWeb.getLayoutParams();
+                    params.bottomMargin = 0;
+                    myWeb.setLayoutParams(params);
+                }
+            }
+        });
 
         //Gör så att javascript kan användas
         myWeb.getSettings().setJavaScriptEnabled(true);
@@ -285,7 +315,10 @@ public class MainActivity extends AppCompatActivity {
         // Initialize inactivity handler and runnable
         inactivityHandler = new Handler(Looper.getMainLooper());
         inactivityRunnable = () -> {
-            myWeb.loadUrl(savedUrl); // Reload URL in WebView
+            if (!Objects.equals(myWeb.getUrl(), savedUrl)) {
+                myWeb.loadUrl(savedUrl); // Reload URL in WebView
+            }
+            //myWeb.loadUrl(savedUrl); // Reload URL in WebView
             resetInactivityDetection(); // Restart the inactivity timer after reload
         };
 
