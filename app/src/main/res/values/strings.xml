@@ -4,4 +4,5 @@
         <item>Portrait</item>
         <item>Landscape</item>
     </string-array>
+    <string name="pin_code_label">Pin Code</string>
 </resources>

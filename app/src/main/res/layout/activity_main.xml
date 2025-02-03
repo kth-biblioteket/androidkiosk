@@ -48,6 +48,14 @@
             android:fitsSystemWindows="true">
 
             <TextView
+                android:id="@+id/resolutionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upplösning: "
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:layout_gravity="center"/>
+            <TextView
                 android:id="@+id/label_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,6 +71,23 @@
                 android:layout_marginBottom="0dp"/>
             <EditText
                 android:id="@+id/inactivitytimeout_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:hint="Enter Timeout Value"
+                android:inputType="textUri"
+                android:text="10000"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/label_inactivitytimeoutweb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Timeout för inaktivitet extern web"
+                android:textSize="16sp"
+                android:layout_marginBottom="0dp"/>
+            <EditText
+                android:id="@+id/inactivitytimeoutweb_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
@@ -121,12 +146,58 @@
                 android:text="Enable Full Screen"
                 android:layout_marginBottom="20dp"/>
 
+            <CheckBox
+                android:id="@+id/splashscreen_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enable Splash Screen"
+                android:layout_marginBottom="20dp"/>
+
+            <CheckBox
+                android:id="@+id/splashscreenvideo_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enable Splash Screen Video"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:id="@+id/label_pincode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pin_code_label"
+                android:textSize="16sp"
+                android:layout_marginBottom="0dp"/>
+            <EditText
+                android:id="@+id/pincode_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:hint="@string/pin_code_label"
+                android:inputType="textUri"
+                android:layout_marginBottom="10dp"/>
+
             <!-- Save Button -->
             <Button
                 android:id="@+id/save_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Save" />
+
+            <Button
+                android:id="@+id/showLogButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Log"
+                android:layout_gravity="center" />
+
+            <!-- TextView to display log content -->
+            <TextView
+                android:id="@+id/logTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:textSize="16sp"
+                android:padding="16dp" />
         </LinearLayout>
     </ScrollView>
 </androidx.drawerlayout.widget.DrawerLayout>
